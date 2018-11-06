@@ -1,0 +1,2 @@
+class FirebaseNotificationToken < ApplicationRecord
+end
