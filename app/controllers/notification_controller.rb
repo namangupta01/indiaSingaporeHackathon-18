@@ -1,9 +1,6 @@
 class NotificationController < ApplicationController
 	require 'active_support'
 	require "active_support/core_ext"
-	require 'byebug'
-
-
 
 	def google_home
 		# response = Hash.new
