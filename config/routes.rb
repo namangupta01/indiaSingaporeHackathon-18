@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
 post 'notification/set-registration-token' => 'notification#set_registraion_token'
 post 'notification/send-help' => 'notification#send_help'
+post 'notification/google-home' => 'notification3google_home'
 
 end

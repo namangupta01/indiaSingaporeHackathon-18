@@ -4,6 +4,20 @@ class NotificationController < ApplicationController
 	require "active_support/core_ext"
 	require 'byebug'
 
+
+
+	def google_home
+		response = Hash.new
+		response[:speech] = "asd1"
+		response[:displayText] = "asd2"
+		response[:data][:google][:expect_user_response] = true
+		response[:data][:google][:is_ssml] = true
+		response[:data][:google][:permissions_request][:opt_context] = "opt_context"
+		response[:data][:google][:permissions] = ["DEVICE_PRECISE_LOCATION"]
+		response[:contextOut] = ["contextOut"]
+		render json: response
+	end
+
 	def set_registraion_token
 		registration_id = params["registration_id"]
 		if registration_id.blank?
