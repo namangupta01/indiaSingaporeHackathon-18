@@ -1,5 +1,4 @@
 class NotificationController < ApplicationController
-	skip_before_action :verify_authenticity_token
 	require 'active_support'
 	require "active_support/core_ext"
 	require 'byebug'
