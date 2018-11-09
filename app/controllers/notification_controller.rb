@@ -7,14 +7,16 @@ class NotificationController < ApplicationController
 
 
 	def google_home
+		# response = Hash.new
+		# response[:speech] = "asd1"
+		# response[:displayText] = "asd2"
+		# response[:data][:google][:expect_user_response] = true
+		# response[:data][:google][:is_ssml] = true
+		# response[:data][:google][:permissions_request][:opt_context] = "opt_context"
+		# response[:data][:google][:permissions] = ["DEVICE_PRECISE_LOCATION"]
+		# response[:contextOut] = ["contextOut"]
 		response = Hash.new
-		response[:speech] = "asd1"
-		response[:displayText] = "asd2"
-		response[:data][:google][:expect_user_response] = true
-		response[:data][:google][:is_ssml] = true
-		response[:data][:google][:permissions_request][:opt_context] = "opt_context"
-		response[:data][:google][:permissions] = ["DEVICE_PRECISE_LOCATION"]
-		response[:contextOut] = ["contextOut"]
+		response[:text] = "text"
 		render json: response
 	end
 
