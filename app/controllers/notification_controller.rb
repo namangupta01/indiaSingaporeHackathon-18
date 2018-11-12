@@ -152,7 +152,7 @@ class NotificationController < ApplicationController
 		end
 		data = {
 			'reg_type' => 'security',
-			'notification_type' => 3,
+			'notification_type' => 1,
 			'image_link' => "/uploads/#{name}",
 			'code' => "101"
 		}
