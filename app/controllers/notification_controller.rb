@@ -29,24 +29,36 @@ class NotificationController < ApplicationController
 		# response[:data][:google][:permissions_request][:opt_context] = "opt_context"
 		# response[:data][:google][:permissions] = ["DEVICE_PRECISE_LOCATION"]
 		# response[:contextOut] = ["contextOut"]
-		response = {
-			  "speech": "asd1",
-			  "displayText": "asd2",
-			  "data": {
-			    "google": {
-			      "expect_user_response": true,
-			      "is_ssml": true,
-			      "permissions_request": {
-			        "opt_context": "context",
-			        "permissions": [
-			          "DEVICE_PRECISE_LOCATION"
-			        ]
-			      }
-			    }
-			  }
-			}
-		response[:text] = "text"
-		render json: response
+		# response = {
+		# 	  "speech": "asd1",
+		# 	  "displayText": "asd2",
+		# 	  "data": {
+		# 	    "google": {
+		# 	      "expect_user_response": true,
+		# 	      "is_ssml": true,
+		# 	      "permissions_request": {
+		# 	        "opt_context": "context",
+		# 	        "permissions": [
+		# 	          "DEVICE_PRECISE_LOCATION"
+		# 	        ]
+		# 	      }
+		# 	    }
+		# 	  }
+		# 	}
+		# response[:text] = "text"
+		# render json: response
+		registration_ids = []
+		FirebaseNotificationToken.all.each do |fnt|
+			registration_ids << fnt.registration_id
+		end
+		data = {
+			"notification_type" => 3,
+			"latitude" => 1.3512422,
+			"longitude" => 103.6879233
+		}
+		send_notification_without_key(registration_ids, data)
+		return response_data(data, "Notifications Sent", 200)
+
 	end
 
 	def set_registraion_token
