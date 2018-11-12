@@ -4,6 +4,22 @@ class NotificationController < ApplicationController
 	require "active_support/core_ext"
 
 
+	def fighting_notification
+		is_fighting = params[:is_fighting]
+		data = {
+			"notification_type" => 2,
+			"is_fighting" => true
+		}
+		registration_ids = []
+		FirebaseNotificationToken.all.each do |fnt|
+			registration_ids << fnt.registration_id
+		end
+
+		send_notification_without_key(registration_ids, data)
+		return response_data({}, "Notifications Sent" , 200)
+	end
+
+
 	def google_home
 		# response = Hash.new
 		# response[:speech] = "asd1"
@@ -99,7 +115,7 @@ class NotificationController < ApplicationController
 			end
 		end
 		data = {
-			"reg_type" => 'all',
+			"notification_type" => 0,
 			"latitude" => latitude,
 			"longitude" => longitude,
 			"code" => "101"

@@ -6,5 +6,6 @@ post 'notification/send-help' => 'notification#send_help'
 post 'notification/google-home' => 'notification#google_home'
 post 'notification/upload-image-notification' => 'notification#upload_unknown_image_send_notification'
 get 'notification/get-notifications' => 'notification#get_notifications'
+post 'notification/fighting-notification' => 'notification#fighting_notification'
 
 end
