@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_065851) do
+ActiveRecord::Schema.define(version: 2018_11_12_232247) do
 
   create_table "firebase_notification_tokens", force: :cascade do |t|
     t.string "registration_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "reg_type"
+  end
+
+  create_table "notification_user_mappings", force: :cascade do |t|
+    t.integer "notification_id"
+    t.string "user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_id"], name: "index_notification_user_mappings_on_notification_id"
   end
 
   create_table "notifications", force: :cascade do |t|

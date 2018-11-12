@@ -101,8 +101,8 @@ class NotificationController < ApplicationController
 	def send_notification_without_key(registration_ids, data)
 		notification = Notification.new
 		notification.data = data.to_json
-		notification.save
-		data['id'] = notification.id
+		notification.save!
+		data['notification_id'] = notification.id
 		api_key = "AAAAb7b8_Ag:APA91bHGEEv6fkDh0C3tIYNufaSaQ2ouAuN8MMSZUV8nhIfVPZPfIIzNeXxU2OpOrZDv-Ynwefaxv-jTCVHP4E2ItXQeCugpKG-dLl7YLZTcy87dE9XSRDUTMigtpBKOAyWxHQXtbG43"
 		headers = {
 		     'Authorization' => "key=#{api_key}",
@@ -169,6 +169,27 @@ class NotificationController < ApplicationController
 			notifications << noty
 		end
 		response_data(notifications, "List of all Notifications", 200)	
+	end
+
+	def set_help_user
+		notification_id = params[:notification_id]
+		user = params[:user]
+		notification = Notification.where(id: notification_id)
+		if notification.any?
+			noty_user_mapping = NotificationUserMapping.new
+			noty_user_mapping.notification_id = notification_id
+			noty_user_mapping.user = user
+			noty_user_mapping.save!
+			return response_data(noty_user_mapping, "List of all Notifications", 200)	
+		else
+			return response_data({}, "Not able to create. Invalid notification id", 200)	
+		end
+	end
+
+	def get_all_notification_mapping
+		notification_id = params[:notification_id]
+		noty_user_mappings = NotificationUserMapping.where(notification_id: notification_id)
+		return response_data(noty_user_mappings, "List of notification user mappings", 200)
 	end
 end
 # def response_data(data, message, status, error:nil, disabled:false, update:false, external_rating: nil, params: {})

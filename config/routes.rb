@@ -7,5 +7,7 @@ post 'notification/google-action' => 'notification#google_home'
 post 'notification/upload-image-notification' => 'notification#upload_unknown_image_send_notification'
 get 'notification/get-notifications' => 'notification#get_notifications'
 post 'notification/fighting-notification' => 'notification#fighting_notification'
+post 'notification/set-help-user' => 'notification#set_help_user'
+get 'notification/get-all-notification-mapping' => 'notification#get_all_notification_mapping'
 
 end
