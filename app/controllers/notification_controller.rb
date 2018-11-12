@@ -8,7 +8,9 @@ class NotificationController < ApplicationController
 		is_fighting = params[:is_fighting]
 		data = {
 			"notification_type" => 2,
-			"is_fighting" => true
+			"is_fighting" => true,
+			"latitude" => 1.3512422,
+			"longitude" => 103.6879233 
 		}
 		registration_ids = []
 		FirebaseNotificationToken.all.each do |fnt|
