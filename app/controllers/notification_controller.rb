@@ -168,6 +168,7 @@ class NotificationController < ApplicationController
 			noty = {}
 			noty[:id] = notification.id
 			noty[:data] = JSON.parse(notification.data)
+			noty[:created_at] = notification.created_at
 			notifications << noty
 		end
 		response_data(notifications, "List of all Notifications", 200)	
