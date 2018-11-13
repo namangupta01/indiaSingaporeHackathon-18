@@ -8,6 +8,6 @@ post 'notification/upload-image-notification' => 'notification#upload_unknown_im
 get 'notification/get-notifications' => 'notification#get_notifications'
 post 'notification/fighting-notification' => 'notification#fighting_notification'
 post 'notification/set-help-user' => 'notification#set_help_user'
-get 'notification/get-all-notification-mapping' => 'notification#get_all_notification_mapping'
+post 'notification/get-all-notification-mapping' => 'notification#get_all_notification_mapping'
 
 end
