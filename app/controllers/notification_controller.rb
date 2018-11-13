@@ -76,7 +76,9 @@ class NotificationController < ApplicationController
 				return response_data(fnt, "Token Created", 200)	
 			else
 				fnt = fnt.first
-				return response_data(fnt, "Already Present", 200)	
+				fnt.reg_type = reg_type
+				fnt.save!
+				return response_data(fnt, "Updated", 200)	
 			end
 		end
 	end
