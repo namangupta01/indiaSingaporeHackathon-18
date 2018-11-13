@@ -69,7 +69,7 @@ class NotificationController < ApplicationController
 		if registration_id.blank?
 			return response_data({}, "No Registration Id", 404)
 		else
-			fnt = FirebaseNotificationToken.where(registration_id: registration_id, reg_type: reg_type)
+			fnt = FirebaseNotificationToken.where(registration_id: registration_id)
 			unless fnt.any?
 				fnt = FirebaseNotificationToken.create(registration_id: registration_id, reg_type: reg_type)
 				fnt.save!
